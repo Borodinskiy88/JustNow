@@ -28,18 +28,36 @@
 Итог: у вас должен быть репозиторий на GitHub, в котором будет ваш Gradle-проект.
  */
 fun main() {
-    println("Пользователь был в сети " + agoToText())
-
+//    val text = agoToText()
+//    print("был(а) в сети $text")
+//    val message = "был(а) в сети"
+    val timeAgo = 549
+//    println("@@@например такая строчка@@@" + agoToText())
+    println("был(а) в сети " + lastVisit(timeAgo))
 }
 
-fun agoToText() {
-    val secondAgo = 52
-    when(secondAgo) {
-        in 0..60 -> println("Только что")
-        in 61..60 * 60 -> println("х минут назад")
-        in 60 * 60 + 1..24 * 60 * 60 -> println("x часов назад")
-        in 24 * 60 * 60 + 1..24 * 60 * 60 * 2 -> println("сегодня")
-        in 24 * 60 * 60 * 2 + 1..24 * 60 * 60 * 3 -> println("вчера")
-        else -> println("давно")
+
+//fun agoToText(): String {
+//    val secondAgo = 549
+//    val message = "был(а) в сети"
+//    when(secondAgo) {
+//        in 0..60 -> print("$message только что ")
+//        in 61..60 * 60 -> print("$message х минут назад ")
+//        in 60 * 60 + 1..24 * 60 * 60 -> print("$message x часов назад ")
+//        in 24 * 60 * 60 + 1..24 * 60 * 60 * 2 -> print("$message сегодня ")
+//        in 24 * 60 * 60 * 2 + 1..24 * 60 * 60 * 3 -> print("$message вчера ")
+//        else -> print("давно")
+//    }
+//    return String()
+//}
+
+fun lastVisit(timeAgo: Int): String {
+    return when(timeAgo) {
+        in 0..60 -> "только что "
+        in 61..60 * 60 -> "х минут назад "
+        in 60 * 60 + 1..24 * 60 * 60 -> "x часов назад "
+        in 24 * 60 * 60 + 1..24 * 60 * 60 * 2 -> "сегодня "
+        in 24 * 60 * 60 * 2 + 1..24 * 60 * 60 * 3 -> "вчера "
+        else -> "давно"
     }
 }
