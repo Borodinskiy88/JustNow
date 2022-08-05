@@ -31,9 +31,10 @@ fun main() {
 //    val text = agoToText()
 //    print("был(а) в сети $text")
 //    val message = "был(а) в сети"
-    val timeAgo = 549
+    val secondAgo = 61
+    val minutes: Int = secondAgo / 60
 //    println("@@@например такая строчка@@@" + agoToText())
-    println("был(а) в сети " + lastVisit(timeAgo))
+    println("был(а) в сети " + lastVisit(minutes, secondAgo))
 }
 
 
@@ -51,13 +52,37 @@ fun main() {
 //    return String()
 //}
 
-fun lastVisit(timeAgo: Int): String {
-    return when(timeAgo) {
+fun lastVisit(minutes: Int, secondAgo: Int): String {
+
+    return when(secondAgo) {
         in 0..60 -> "только что "
-        in 61..60 * 60 -> "х минут назад "
+        in 61..60 * 60 -> "$minutes минут назад "
         in 60 * 60 + 1..24 * 60 * 60 -> "x часов назад "
         in 24 * 60 * 60 + 1..24 * 60 * 60 * 2 -> "сегодня "
         in 24 * 60 * 60 * 2 + 1..24 * 60 * 60 * 3 -> "вчера "
         else -> "давно"
     }
+}
+
+fun minutesAgo(secondAgo: Int): String {
+//todo 1, 11, 21, 31, 41, 51 минута
+// 2-4, 22-24, 32-34, 42-44, 52-54 минуты
+// остальное минут
+
+    val minutes: Int = secondAgo / 60
+    return when(minutes) {
+ //       in 60 * 60..60 * 60 * 2 -1 -> "1 час назад"
+        if (minutes % 10 == 1)  {"минута"}
+        else if (minutes % 10 == 2 || 3 || 4) -> {"минуты"}
+        else {"минут"}
+
+
+    }
+}
+
+fun hoursAgo(timeAgo: Int): String {
+//todo 1, 21 час
+// 2, 3, 4, 22, 23 часа
+// 5-20 часов
+// 1 час = 3600 секунд
 }
