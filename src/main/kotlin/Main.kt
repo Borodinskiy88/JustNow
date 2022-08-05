@@ -27,3 +27,19 @@
 
 Итог: у вас должен быть репозиторий на GitHub, в котором будет ваш Gradle-проект.
  */
+fun main() {
+    println("Пользователь был в сети " + agoToText())
+
+}
+
+fun agoToText() {
+    val secondAgo = 52
+    when(secondAgo) {
+        in 0..60 -> println("Только что")
+        in 61..60 * 60 -> println("х минут назад")
+        in 60 * 60 + 1..24 * 60 * 60 -> println("x часов назад")
+        in 24 * 60 * 60 + 1..24 * 60 * 60 * 2 -> println("сегодня")
+        in 24 * 60 * 60 * 2 + 1..24 * 60 * 60 * 3 -> println("вчера")
+        else -> println("давно")
+    }
+}
