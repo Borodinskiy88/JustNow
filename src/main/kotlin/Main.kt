@@ -20,7 +20,7 @@ fun agoToText(minutes: Int, secondAgo: Int, hours: Int): String {
 }
 
 fun minutesAgo(minutes: Int): String {
-// 1, 11, 21, 31, 41, 51 минута
+// 1, 21, 31, 41, 51 минута
 // 2-4, 22-24, 32-34, 42-44, 52-54 минуты
 // остальное минут
     return if (minutes % 10 == 1 && minutes != 11) {
