@@ -1,6 +1,6 @@
 fun main() {
 
-    val secondAgo = 333333
+    val secondAgo = 3333333
     val minutes: Int = secondAgo / 60
     val hours: Int = secondAgo / 3600
 
@@ -20,27 +20,19 @@ fun agoToText(minutes: Int, secondAgo: Int, hours: Int): String {
 }
 
 fun minutesAgo(minutes: Int): String {
-// 1, 21, 31, 41, 51 минута
-// 2-4, 22-24, 32-34, 42-44, 52-54 минуты
-// остальное минут
-    return if (minutes % 10 == 1 && minutes != 11) {
-        "минуту"
-    } else if (minutes % 10 == 2 || minutes % 10 == 3 || minutes % 10 == 4) {
-        "минуты"
-    } else {
-        "минут"
+
+    return when {
+        minutes % 10 == 1 && minutes != 11 -> "минуту"
+        minutes % 10 == 2 || minutes % 10 == 3 || minutes % 10 == 4 -> "минуты"
+        else -> "минут"
     }
 }
 
 fun hoursAgo(hours: Int): String {
-// 1, 21 час
-// 2, 3, 4, 22, 23 часа
-// 5-20 часов
-    return if (hours % 10 == 1) {
-        "час"
-    } else if (hours % 10 == 2 || hours % 10 == 3 || hours % 10 == 4) {
-        "часа"
-    } else {
-        "часов"
+
+    return when {
+        hours % 10 == 1 -> "час"
+        hours % 10 == 2 || hours % 10 == 3 || hours % 10 == 4 -> "часа"
+        else -> "часов"
     }
 }
